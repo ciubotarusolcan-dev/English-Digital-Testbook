@@ -1,1 +1,65 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart English | Unit</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html">
+      Smart English
+    </a>
+    <span class="tagline">Test your skills!</span>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>📚 Test Library</h2>
+      <nav>
+        <a href="../../a11/">🌟 A1.1</a>
+        <a href="../" class="active">🔎 A1.2</a>
+        <a href="../../a1/">📗 A1</a>
+        <a href="../../reading/">
+          📖 Reading Comprehension
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <a class="back" href="../">
+        ← All Units
+      </a>
+
+      <section class="panel">
+        <h1 id="unitTitle"></h1>
+        <p id="instruction"></p>
+        <div id="evaluationCards" class="cards"></div>
+      </section>
+
+      <section id="variantPanel"
+               class="panel"
+               hidden>
+        <h2 id="evaluationTitle"></h2>
+        <p>Choose your test variant.</p>
+        <div id="variantCards" class="cards"></div>
+      </section>
+
+      <section id="testPanel"
+               class="panel"
+               hidden>
+        <h2 id="testTitle"></h2>
+        <div class="notice">
+          Detective Corgi is preparing this test!
+          Interactive exercises will be added here.
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+
