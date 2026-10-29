@@ -1,1 +1,387 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>English Digital Testbook</title>
+  <style>
+    :root {
+      --green: #168c16;
+      --dark-green: #176b19;
+      --red: #e63c32;
+      --light-green: #eaf7e9;
+      --background: #f5f8f4;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: #243024;
+    }
+
+    header {
+      background: white;
+      border-bottom: 5px solid var(--green);
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: var(--green);
+    }
+
+    .logo span { color: var(--red); }
+
+    .authors {
+      color: var(--dark-green);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 85px);
+    }
+
+    aside {
+      width: 285px;
+      flex-shrink: 0;
+      background: white;
+      border-right: 1px solid #dce8dc;
+      padding: 20px 14px;
+    }
+
+    aside h2 {
+      font-size: 17px;
+      color: var(--dark-green);
+      margin: 5px 10px 20px;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .menu-button {
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 13px;
+      margin-bottom: 5px;
+      border-radius: 9px;
+      text-align: left;
+      font-size: 15px;
+      font-weight: bold;
+      color: #29452b;
+    }
+
+    .menu-button:hover,
+    .menu-button.active {
+      background: var(--light-green);
+      color: var(--dark-green);
+    }
+
+    .submenu {
+      padding-left: 15px;
+      display: none;
+    }
+
+    .submenu.open { display: block; }
+
+    .unit-button {
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .evaluation-button {
+      font-size: 12px;
+      font-weight: normal;
+      padding: 10px;
+    }
+
+    main {
+      flex: 1;
+      min-width: 0;
+      padding: 35px;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      max-width: 950px;
+      margin: auto;
+      box-shadow: 0 4px 18px #0000000a;
+      text-align: center;
+    }
+
+    h1 { color: var(--green); }
+
+    .red { color: var(--red); }
+
+    .cover {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px #00000025;
+      margin-top: 15px;
+    }
+
+    .variant-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .variant {
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 35px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .variant:hover { background: var(--dark-green); }
+
+    .notice {
+      background: var(--light-green);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 25px;
+      color: var(--dark-green);
+    }
+
+    .uk-flag {
+      font-size: 52px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 700px) {
+      .layout { flex-direction: column; }
+      aside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+      main { padding: 15px; }
+      .panel { padding: 20px; }
+      header { padding: 15px; }
+      .logo { font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <span>English</span> TESTS
+    </div>
+    <div class="authors">
+      Corina Ceban &amp; Ina Solcan
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <h2>📚 Test Library</h2>
+      <div id="sidebar"></div>
+    </aside>
+
+    <main>
+      <div class="panel" id="content">
+        <div class="uk-flag">🇬🇧</div>
+        <h1>Welcome to English Tests!</h1>
+        <p>Learn English. Practise. Succeed!</p>
+        <p>
+          Select your English level from
+          the menu on the left.
+        </p>
+        <div class="notice">
+          Interactive English learning
+          and assessment platform
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const levels = [
+      { id: "a11", name: "A1.1" },
+      { id: "a12", name: "A1.2" },
+      { id: "a1", name: "A1" },
+      { id: "reading", name: "Reading Comprehension" }
+    ];
+
+    const sidebar = document.getElementById("sidebar");
+    const content = document.getElementById("content");
+
+    function makeButton(text, className, action) {
+      const button = document.createElement("button");
+      button.textContent = text;
+      button.className = className;
+      button.type = "button";
+      button.addEventListener("click", action);
+      return button;
+    }
+
+    function toggleMenu(element) {
+      element.classList.toggle("open");
+    }
+
+    function showHome() {
+      content.innerHTML = `
+        <div class="uk-flag">🇬🇧</div>
+        <h1>Welcome to English Tests!</h1>
+        <p>Learn English. Practise. Succeed!</p>
+        <p>Select A1.2 to open the textbook.</p>
+      `;
+    }
+
+    function showCover() {
+      content.innerHTML = `
+        <h1><span class="red">English</span> Tests</h1>
+        <h2>Level A1.2</h2>
+        <p>Corina Ceban &amp; Ina Solcan</p>
+        <img class="cover"
+             src="cover.jpg"
+             alt="English Tests A1.2 textbook cover">
+        <p>Select a unit and an evaluation
+           from the sidebar.</p>
+      `;
+    }
+
+    function showUnit(unit) {
+      content.innerHTML = `
+        <h1>Unit ${unit}</h1>
+        <p>Select an evaluation from the menu.</p>
+      `;
+    }
+
+    function showEvaluation(level, unit, evaluation) {
+      content.innerHTML = "";
+
+      const title = document.createElement("h1");
+      title.textContent = "Unit " + unit;
+
+      const subtitle = document.createElement("h2");
+      subtitle.textContent = evaluation;
+
+      const info = document.createElement("p");
+      info.textContent = "Choose your test variant.";
+
+      const buttons = document.createElement("div");
+      buttons.className = "variant-buttons";
+
+      [1, 2].forEach(number => {
+        buttons.appendChild(
+          makeButton(
+            "Variant " + number,
+            "variant",
+            () => showVariant(level, unit, evaluation, number)
+          )
+        );
+      });
+
+      content.append(title, subtitle, info, buttons);
+    }
+
+    function showVariant(level, unit, evaluation, variant) {
+      content.innerHTML = "";
+
+      const heading = document.createElement("h1");
+      heading.textContent = evaluation;
+
+      const details = document.createElement("h2");
+      details.textContent =
+        "Unit " + unit + " — Variant " + variant;
+
+      const notice = document.createElement("div");
+      notice.className = "notice";
+      notice.textContent =
+        "The interactive test will be added here.";
+
+      content.append(heading, details, notice);
+    }
+
+    function buildSidebar() {
+      levels.forEach(level => {
+        const levelButton = makeButton(
+          "📗 " + level.name,
+          "menu-button",
+          () => {
+            toggleMenu(levelMenu);
+
+            if (level.id === "a12") {
+              showCover();
+            } else {
+              content.innerHTML = `
+                <h1>${level.name}</h1>
+                <p>Choose a unit from the sidebar.</p>
+              `;
+            }
+          }
+        );
+
+        const levelMenu = document.createElement("div");
+        levelMenu.className = "submenu";
+
+        for (let unit = 1; unit <= 6; unit++) {
+          const unitMenu = document.createElement("div");
+          unitMenu.className = "submenu";
+
+          const unitButton = makeButton(
+            "📁 Unit " + unit,
+            "menu-button unit-button",
+            () => {
+              toggleMenu(unitMenu);
+              showUnit(unit);
+            }
+          );
+
+          const evaluations = [
+            "Formative Evaluation 1",
+            "Formative Evaluation 2",
+            "Formative Evaluation on Unit " + unit
+          ];
+
+          evaluations.forEach(evaluation => {
+            const evaluationButton = makeButton(
+              "▸ " + evaluation,
+              "menu-button evaluation-button",
+              () => showEvaluation(
+                level.id,
+                unit,
+                evaluation
+              )
+            );
+
+            unitMenu.appendChild(evaluationButton);
+          });
+
+          levelMenu.append(unitButton, unitMenu);
+        }
+
+        sidebar.append(levelButton, levelMenu);
+      });
+    }
+
+    buildSidebar();
+    showHome();
+  </script>
+</body>
+</html>
+
