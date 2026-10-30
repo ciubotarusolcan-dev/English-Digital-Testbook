@@ -106,6 +106,15 @@ function chooseEvaluation(evaluation) {
 }
 
 function chooseVariant(variant) {
+  // A1.2 / Unit 1 / Formative Evaluation 1:
+  // open the real interactive test immediately when the variant is clicked.
+  if (state.level === "a12" && state.unit === 1 &&
+      state.evaluation === getEvaluations(1)[0]) {
+    window.location.assign(
+      "a12/unit1/formative-evaluation-1/variant-" + variant + "/"
+    );
+    return;
+  }
   state.variant = variant;
   render();
 }
