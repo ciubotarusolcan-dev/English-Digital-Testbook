@@ -334,6 +334,7 @@ function showLevels() {
 /* SHOW UNITS */
 
 function showUnits() {
+  cards.classList.add("units-grid");
   title.textContent =
     getLevelName() + " — Choose Your Unit";
 
@@ -446,6 +447,7 @@ function showSelectedTest() {
 /* MAIN RENDER */
 
 function render() {
+  cards.classList.remove("units-grid");
   cards.replaceChildren();
   testPanel.replaceChildren();
   testPanel.hidden = true;
