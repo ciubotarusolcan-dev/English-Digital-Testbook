@@ -17,7 +17,7 @@ function addExercise(task,idx){
 }
 tasks.forEach(addExercise);
 const section=document.createElement("section");section.className="exercise";
-section.innerHTML='<h2>4. Label the picture. Use the words in the box.</h2><p class="hint">Drag each word onto its matching numbered body part. You can also click a word, then click its target.</p><div class="wordtray" id="wordTray"></div><div class="figure-layout"><div class="figure"><svg viewBox="0 0 320 390" role="img" aria-label="Child body diagram with numbered targets on ear, nose, mouth, finger and leg">
+section.innerHTML=`<h2>4. Label the picture. Use the words in the box.</h2><p class="hint">Drag each word onto its matching numbered body part. You can also click a word, then click its target.</p><div class="wordtray" id="wordTray"></div><div class="figure-layout"><div class="figure"><svg viewBox="0 0 320 390" role="img" aria-label="Child body diagram with numbered targets on ear, nose, mouth, finger and leg">
 <ellipse cx="160" cy="360" rx="104" ry="14" fill="#dceaf6"/>
 <path d="M143 176 Q130 210 138 251 L182 251 Q190 208 177 176" fill="#ed8d71" stroke="#a94445" stroke-width="3"/>
 <path d="M139 250 L181 250 L183 278 L137 278Z" fill="#3d75b5" stroke="#245183" stroke-width="3"/>
@@ -35,7 +35,7 @@ section.innerHTML='<h2>4. Label the picture. Use the words in the box.</h2><p cl
 <path d="M154 135 Q160 130 166 135" fill="none" stroke="#a75e50" stroke-width="4" stroke-linecap="round"/>
 <path d="M143 150 Q160 165 176 150" fill="none" stroke="#ab3c42" stroke-width="4" stroke-linecap="round"/>
 <circle cx="98" cy="110" r="12" fill="#fff" stroke="#2c74bc" stroke-width="3"/><text x="98" y="114" font-size="12" font-weight="bold" text-anchor="middle" fill="#245fa9">1</text><circle cx="160" cy="135" r="12" fill="#fff" stroke="#2c74bc" stroke-width="3"/><text x="160" y="139" font-size="12" font-weight="bold" text-anchor="middle" fill="#245fa9">2</text><circle cx="160" cy="155" r="12" fill="#fff" stroke="#2c74bc" stroke-width="3"/><text x="160" y="159" font-size="12" font-weight="bold" text-anchor="middle" fill="#245fa9">3</text><circle cx="60" cy="224" r="12" fill="#fff" stroke="#2c74bc" stroke-width="3"/><text x="60" y="228" font-size="12" font-weight="bold" text-anchor="middle" fill="#245fa9">4</text><circle cx="144" cy="325" r="12" fill="#fff" stroke="#2c74bc" stroke-width="3"/><text x="144" y="329" font-size="12" font-weight="bold" text-anchor="middle" fill="#245fa9">5</text>
-</svg></div><div class="drop-list" id="dropList"></div></div>';
+</svg></div><div class="drop-list" id="dropList"></div></div>`;
 root.append(section);
 const tray=document.getElementById("wordTray"),dropList=document.getElementById("dropList");
 BODY_PARTS.forEach(word=>{const chip=document.createElement("button");chip.type="button";chip.className="wordchip";chip.textContent=word;chip.draggable=true;chip.dataset.word=word;chip.addEventListener("dragstart",event=>{if(submitted){event.preventDefault();return;}event.dataTransfer.setData("text/plain",word);event.dataTransfer.effectAllowed="move"});chip.addEventListener("click",()=>{if(submitted)return;chosenWord=word;document.querySelectorAll(".wordchip").forEach(c=>c.classList.toggle("selected",c===chip))});tray.append(chip)});
