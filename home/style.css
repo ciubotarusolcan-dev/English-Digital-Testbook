@@ -709,3 +709,35 @@ a:focus-visible {
   }
 }
 
+
+/* Compact home: bring learning buttons and bottom banner higher */
+.main-content { padding-top: 14px; padding-bottom: 12px; }
+.banner-section { margin-bottom: 14px; }
+.welcome-section { margin-bottom: 14px; padding: 16px 22px; }
+.welcome-label { margin: 0 0 8px; font-size: 13px; }
+.welcome-title { margin: 0 0 9px; gap: 0; font-size: clamp(25px, 3vw, 38px); line-height: 1.23; }
+.welcome-english { margin-bottom: 7px; font-size: clamp(16px, 1.8vw, 20px); line-height: 1.4; }
+.welcome-romanian { margin-bottom: 0; font-size: 13px; line-height: 1.55; }
+.learning-panel { padding: 20px 25px; }
+.small-heading { margin: 0; }
+.learning-heading h2 { margin: 6px 0; }
+.learning-heading > p:last-child { margin: 5px 0; }
+.breadcrumbs { margin-top: 11px; }
+.main-cards { margin-top: 16px; gap: 15px; }
+.learning-card { min-height: 125px; padding: 15px 12px; gap: 8px; }
+.bottom-banner-section { margin-top: 14px; }
+.site-footer { padding-top: 12px; }
+
+/* Exactly three unit cards per row on desktop and tablet */
+.main-cards.units-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 720px) {
+  .welcome-section { padding: 17px 13px; }
+  .learning-panel { padding: 17px 13px; }
+  .main-cards.units-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 420px) {
+  .main-cards.units-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .main-cards.units-grid .learning-card { padding: 10px 5px; font-size: 17px; }
+}
