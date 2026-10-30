@@ -425,14 +425,12 @@ function showSelectedTest() {
 
   const link = document.createElement("a");
   link.className = "open-test";
-  link.textContent = "Open Unit " + state.unit;
+  const ready = state.level === "a12" && state.unit === 1 && evaluationIndex === 1;
+  link.textContent = ready ? "Start your test" : "Open Unit " + state.unit;
 
-  link.href =
-    state.level +
-    "/unit" +
-    state.unit +
-    "/?" +
-    params.toString();
+  link.href = ready
+    ? "a12/unit1/formative-evaluation-1/variant-" + state.variant + "/"
+    : state.level + "/unit" + state.unit + "/?" + params.toString();
 
   testPanel.append(
     heading,
