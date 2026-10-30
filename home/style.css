@@ -741,3 +741,24 @@ a:focus-visible {
   .main-cards.units-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .main-cards.units-grid .learning-card { padding: 10px 5px; font-size: 17px; }
 }
+
+/* Visible repository license link */
+.site-footer { flex-wrap: wrap; }
+.license-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  border: 2px solid #a8d4ef;
+  border-radius: 18px;
+  background: #e7f4ff;
+  color: #245fa9;
+  text-decoration: none;
+  font: bold 13px Georgia, "Times New Roman", serif;
+  transition: background .2s, border-color .2s;
+}
+.license-link:hover, .license-link:focus-visible {
+  background: #fff0bd;
+  border-color: #eac46c;
+  color: #b6334a;
+}
