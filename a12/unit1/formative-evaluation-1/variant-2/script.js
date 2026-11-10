@@ -17,14 +17,30 @@ function addExercise(task,idx){
 tasks.forEach(addExercise);
 const section=document.createElement("section");section.className="exercise";
 section.innerHTML=`<h2>4. Label the picture. Use the words in the box.</h2><p class="hint">Drag each word onto its matching numbered body part. You can also click a word, then click its target.</p><div class="wordtray" id="wordTray"></div><div class="figure-layout"><div class="figure"><div class="body-picture">
-<img src="../FE1.jpg" width="1267" height="1600" alt="A child with five numbered lines pointing to body parts">
-<div class="picture-labels" aria-hidden="true">
-<span style="top:30.5%">1</span>
-<span style="top:35%">2</span>
-<span style="top:42.3%">3</span>
-<span style="top:48.8%">4</span>
-<span style="top:81.1%">5</span>
-</div></div></div><div class="drop-list" id="dropList"></div></div>`;
+<img src="../FE1.png" width="1085" height="1450" alt="A child with five numbered lines pointing to body parts">
+<svg class="picture-labels" viewBox="0 0 486 650" aria-hidden="true">
+  <g class="picture-leaders">
+    <path d="M68 153 L96 153 L239 184"/>
+    <path d="M420 158 L397 158 L338 182"/>
+    <path d="M68 218 L96 218 L240 207"/>
+    <path d="M455 231 L455 251 L457 277"/>
+    <path d="M409 538 L383 538 L285 550"/>
+  </g>
+  <g class="picture-targets">
+    <circle cx="239" cy="184" r="4"/>
+    <circle cx="338" cy="182" r="4"/>
+    <circle cx="240" cy="207" r="4"/>
+    <circle cx="457" cy="277" r="4"/>
+    <circle cx="285" cy="550" r="4"/>
+  </g>
+  <g class="picture-badges">
+    <circle cx="68" cy="153" r="19"/><text x="68" y="153">1</text>
+    <circle cx="420" cy="158" r="19"/><text x="420" y="158">2</text>
+    <circle cx="68" cy="218" r="19"/><text x="68" y="218">3</text>
+    <circle cx="455" cy="231" r="19"/><text x="455" y="231">4</text>
+    <circle cx="409" cy="538" r="19"/><text x="409" y="538">5</text>
+  </g>
+</svg></div></div><div class="drop-list" id="dropList"></div></div>`;
 root.append(section);
 const tray=document.getElementById("wordTray"),dropList=document.getElementById("dropList");
 mix(BODY_PARTS).forEach(word=>{const chip=document.createElement("button");chip.type="button";chip.className="wordchip";chip.textContent=word;chip.draggable=true;chip.dataset.word=word;chip.addEventListener("dragstart",event=>{if(submitted){event.preventDefault();return;}event.dataTransfer.setData("text/plain",word);event.dataTransfer.effectAllowed="move"});chip.addEventListener("click",()=>{if(submitted)return;chosenWord=word;document.querySelectorAll(".wordchip").forEach(c=>c.classList.toggle("selected",c===chip))});tray.append(chip)});
