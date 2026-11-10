@@ -1,0 +1,49 @@
+:root{--blue:#245fa9;--red:#d33f57;--cream:#fffaf1;--sky:#e9f7ff;--green:#31865d;--ink:#34567f}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(125deg,#e5f6ff,#fffaf0 55%,#e8f7df);font-family:Georgia,serif;font-weight:bold;color:var(--ink)}
+header{background:white;border-bottom:5px solid #ffe39a;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:var(--blue);font-size:25px;text-decoration:none}header span{color:var(--red)}
+main{max-width:980px;margin:auto;padding:16px}
+.top-banner,.bottom-banner{width:100%;height:auto;display:block;border-radius:17px}.top-banner{max-height:220px;object-fit:cover;object-position:center}
+.back{display:inline-block;margin:12px 0;color:var(--blue);text-decoration:none}
+.intro,.exercise,.summary,.teacher{background:#fff;border:2px solid #d2eafa;border-radius:20px;padding:22px;margin:14px 0;box-shadow:0 5px 18px #245fa914}
+.intro h1{color:var(--blue);font-size:clamp(22px,3.5vw,32px);margin:5px 0}
+.intro p{line-height:1.6;margin:5px 0;color:#5d7c9d}.intro-grid{display:flex;justify-content:space-between;align-items:center;gap:20px}.mascot{width:118px;max-width:28%;object-fit:contain}
+.student{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0}.student label{display:grid;gap:5px;flex:1;min-width:190px}.student input{width:100%;min-width:0}
+input,select,button{font:inherit}input,select{padding:9px;border:2px solid #a2cde8;border-radius:10px;color:var(--blue);background:#fff}
+.exercise h2{color:var(--blue);font-size:19px;line-height:1.45;margin:0 0 10px}
+.questions{display:grid;gap:9px}.question{display:block;line-height:1.7;padding:10px;border-radius:10px;background:#f3f9ff}
+.number{display:inline-block;margin-right:5px;color:var(--red);min-width:24px}
+.question.correct{background:#e6f7eb}.question.incorrect{background:#fff0ef}
+.wordtray{display:flex;gap:8px;flex-wrap:wrap;background:#ecf7ff;padding:12px;border-radius:12px;margin:10px 0}
+.wordchip{padding:10px 15px;border:2px solid #85bbe1;background:#fff0bf;border-radius:12px;color:#174b83;cursor:grab}
+.wordchip.selected{outline:3px solid #d83d54}.wordchip.used{opacity:.45}
+.drop-list{display:grid;gap:10px}
+.drop-row{display:grid;grid-template-columns:85px 1fr;gap:8px;align-items:center}.drop-row strong{color:var(--red);font-size:13px}
+.dropzone{min-height:45px;padding:10px;border:2px dashed #93b9db;border-radius:11px;background:#fffaf0;color:var(--blue);text-align:center;cursor:pointer}
+.dropzone.filled{background:#e2f6eb;border-style:solid}.dropzone.correct{border-color:#32975f;background:#def7e6}.dropzone.incorrect{border-color:#d84853;background:#ffe8eb}
+.hint{font-size:13px;line-height:1.55;color:#607f9e}
+.submit{background:var(--green);color:white;border:0;border-radius:14px;padding:16px 28px;cursor:pointer;font-size:17px}
+.submit:hover{background:#226f49}
+.summary h2{color:var(--blue)}.score{font-size:27px;color:var(--red);margin:8px 0}.result-line{border-bottom:1px solid #dceaf2;padding:6px 0;font-size:13px;line-height:1.5}.result-line.bad{color:#ad3543}.result-line.good{color:#247744}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.actions button{border:2px solid #9cc9ed;background:#eaf6ff;color:var(--blue);padding:10px 15px;border-radius:12px;cursor:pointer}
+.teacher summary{cursor:pointer;color:var(--blue);font-size:18px}.teacher table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}.teacher td,.teacher th{border:1px solid #bdd9ed;padding:8px;text-align:left}.table-wrap{overflow:auto}
+[hidden]{display:none!important}footer{text-align:center;color:var(--blue);padding:14px}
+.question select{width:auto;max-width:100%;margin:4px}
+.question select:disabled{opacity:1}
+.match-picture{position:relative;margin:12px auto;background:#edf8ff;border-radius:14px}
+.match-picture img{display:block;width:100%;height:auto}
+.picture-marker{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;width:25px;height:25px;border:2px solid var(--blue);border-radius:50%;background:white;color:var(--blue);font-size:14px}
+.match-instruction{min-height:1.4em}
+.drop-phrase{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.drop-phrase .dropzone{flex:1;min-width:100px}
+.table-wrap td{overflow-wrap:anywhere}
+:focus-visible{outline:3px solid #a23958;outline-offset:2px}
+@media(max-width:680px){
+  main{padding:9px}
+  .intro,.exercise,.summary,.teacher{padding:14px}
+  .student label{min-width:145px}
+  .mascot{width:85px}
+  .top-banner{max-height:150px}
+  .drop-row{grid-template-columns:70px 1fr}
+  .picture-marker{width:21px;height:21px;font-size:12px}
+}

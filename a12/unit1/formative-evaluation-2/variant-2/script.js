@@ -1,44 +1,43 @@
-// Add questions to this array to activate the interactive test.
-// Each item: { question: "Question?", options: ["A", "B", "C"], answer: 0 }
-// The answer is the zero-based index of the correct option.
-const questions = [];
-const form = document.getElementById("testForm");
-const container = document.getElementById("questions");
-const status = document.getElementById("status");
-const result = document.getElementById("result");
+import { startEvaluation } from "../evaluation.js?v=1";
 
-if (questions.length) {
-  status.hidden = true;
-  form.hidden = false;
-  questions.forEach((item, index) => {
-    const fieldset = document.createElement("fieldset");
-    fieldset.className = "question";
-    const legend = document.createElement("legend");
-    legend.textContent = (index + 1) + ". " + item.question;
-    fieldset.appendChild(legend);
-    item.options.forEach((option, optionIndex) => {
-      const label = document.createElement("label");
-      label.className = "answer";
-      const input = document.createElement("input");
-      input.type = "radio";
-      input.name = "q" + index;
-      input.value = String(optionIndex);
-      label.append(input, document.createTextNode(option));
-      fieldset.appendChild(label);
-    });
-    container.appendChild(fieldset);
-  });
-}
-form.addEventListener("submit", event => {
-  event.preventDefault();
-  let score = 0;
-  questions.forEach((item, index) => {
-    const selected = form.querySelector('input[name="q' + index + '"]:checked');
-    const correct = selected && Number(selected.value) === item.answer;
-    const fieldset = container.children[index];
-    fieldset.classList.toggle("correct", Boolean(correct));
-    fieldset.classList.toggle("incorrect", !correct);
-    if (correct) score++;
-  });
-  result.textContent = "Your score: " + score + " / " + questions.length + " (" + Math.round(score / questions.length * 100) + "%)";
+startEvaluation({
+  variant: 2,
+  choose: [
+    ["He ___ to school at 9 o’clock.", "go", "goes", "goes"],
+    ["You ___ your bike in the afternoon.", "ride", "rides", "ride"],
+    ["I ___ badminton on Sundays.", "play", "plays", "play"],
+    ["Our teacher ___ on the board.", "write", "writes", "writes"],
+    ["The girls ___ happily.", "smile", "smiles", "smile"]
+  ],
+  negatives: [
+    ["Kate ___ eat apples.", "doesn’t"],
+    ["My friend ___ drink milk.", "doesn’t"],
+    ["Our teacher ___ speak German.", "doesn’t"],
+    ["They ___ open the door.", "don’t"],
+    ["These cats ___ sleep much.", "don’t"]
+  ],
+  verbs: [
+    ["His sister ___ (like) ice cream very much.", "like", "likes", "likes"],
+    ["Children ___ (drink) a lot of milk.", "drink", "drinks", "drink"],
+    ["She ___ (go) to school by bus.", "go", "goes", "goes"],
+    ["Tom and Julie ___ (live) in a big city.", "live", "lives", "live"],
+    ["He ___ (brush) his teeth in the morning.", "brush", "brushes", "brushes"]
+  ],
+  matching: {
+    title: "What time is it?",
+    image: "FE22.png",
+    width: 2172,
+    height: 724,
+    alt: "Five numbered analogue clocks in a row, from 1 on the left to 5 on the right.",
+    label: "Clock",
+    sentence: true,
+    words: ["four", "one", "eight", "two", "three"],
+    targets: [
+      { answer: "one", x: 12.2, y: 85 },
+      { answer: "two", x: 31.3, y: 85 },
+      { answer: "three", x: 50, y: 85 },
+      { answer: "four", x: 69, y: 85 },
+      { answer: "eight", x: 88, y: 85 }
+    ]
+  }
 });
