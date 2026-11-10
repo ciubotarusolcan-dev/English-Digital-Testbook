@@ -1,20 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Unit 1 | Formative Evaluation 3 | Variant 2</title>
-  <link rel="stylesheet" href="../../../../css/style.css">
+  <title>Smart English | Formative Evaluation on Unit 1 | Variant 2</title>
+  <link rel="stylesheet" href="style.css?v=1">
+  <script type="module" src="script.js?v=1"></script>
 </head>
 <body>
-  <header class="site-header"><a class="brand" href="../../../../index.html">Smart English</a><span class="tagline">Test your skills!</span></header>
-  <main class="main-content">
-    <a class="back" href="../../">← Unit 1</a>
-    <section class="panel">
-      <h1>Formative Evaluation 3 — Variant 2</h1>
-      <p>Unit 1 · A1.2</p>
-      <div class="notice">Detective Corgi is preparing this test! Interactive exercises will be added here.</div>
-    </section>
+  <header><a href="../../../../index.html">Smart English</a><span>Learn, Smile &amp; Shine!</span></header>
+  <main>
+    <img class="top-banner" src="../../../../home/banner.png.png" alt="Smart English British adventure banner">
+    <a class="back" href="../../">← Back to Unit 1</a>
+    <form id="testForm">
+      <section class="intro">
+        <div class="intro-grid">
+          <div>
+            <p>A1.2 · Unit 1</p>
+            <h1>Formative Evaluation on Unit 1 — Variant 2</h1>
+            <p>7 exercises · 35 points. Complete the exercises, then submit the whole test.</p>
+          </div>
+          <img class="mascot" src="../../../../home/mascot.png.png" alt="Detective Corgi">
+        </div>
+        <div class="student">
+          <label>Student name<input name="studentName" autocomplete="name" maxlength="100" required placeholder="Your full name"></label>
+          <label>Class<input name="studentClass" maxlength="25" required placeholder="e.g. 3A"></label>
+          <label>Teacher’s name<input name="teacherName" maxlength="100" required placeholder="Teacher’s full name"></label>
+        </div>
+      </section>
+      <div id="exercises"></div>
+      <section class="exercise">
+        <p class="hint">You will see the answer key after you submit. Each item is worth 1 point. In Exercise 7, both parts must be correct to earn the point.</p>
+        <button class="submit" type="submit">Submit my test</button>
+      </section>
+    </form>
+    <section class="summary" id="results" hidden tabindex="-1"></section>
+    <details class="teacher">
+      <summary>Teacher tools — results and mistakes</summary>
+      <p class="hint">Results stay in this browser. To collect results from another device, ask the pupil to send their downloaded JSON result. Import the files here and export the combined table as CSV. Check translations in the Review column.</p>
+      <div class="actions">
+        <button id="importResults" type="button">Import result files (JSON)</button>
+        <input id="resultFiles" type="file" accept=".json,application/json" multiple hidden>
+        <button id="exportCsv" type="button" disabled>Export results (CSV)</button>
+      </div>
+      <p id="teacherStatus" role="status"></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Student</th><th>Class</th><th>Teacher</th><th>Variant</th><th>Score</th><th>Descriptor</th><th>Incorrect / blank answers</th><th>Date</th><th>Review</th></tr></thead>
+          <tbody id="teacherRows"></tbody>
+        </table>
+      </div>
+      <section id="review" hidden tabindex="-1"></section>
+    </details>
+    <img class="bottom-banner" src="../../../../home/bannerjos1.png.png" alt="English countryside illustration">
+    <footer>Smart English · Every little step makes you a star!</footer>
   </main>
 </body>
 </html>
